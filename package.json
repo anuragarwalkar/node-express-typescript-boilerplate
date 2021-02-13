@@ -1,5 +1,5 @@
 {
-  "name": "express-typescript-boilerplate",
+  "name": "create-nodejs-typescript-app",
   "version": "1.0.0",
   "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
   "main": "index.ts",
@@ -20,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/anuragarwalkar/node-express-typescript-boilerplate/issues"
   },
-  "homepage": "https://github.com/anuragarwalkar/node-express-typescript-boilerplate#readme"
+  "homepage": "https://github.com/anuragarwalkar/node-express-typescript-boilerplate#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.16"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "husky": "^5.0.9",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  }
 }
