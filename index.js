@@ -10,9 +10,7 @@ async function exeCommand(command) {
     const { stdout, stderr } = await exec(command);
     console.log(stdout, stderr);
   } catch {
-    (error) => {
-      console.error(error);
-    };
+    console.error(error);
   }
 }
 
