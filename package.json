@@ -2,11 +2,19 @@
   "name": "create-nodejs-typescript-app",
   "version": "1.0.0",
   "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
-  "main": "index.ts",
+  "main": "src/app.ts",
+  "bin": "./index.js",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "test": "jest -i",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js"
   },
   "repository": {
     "type": "git",
