@@ -2,12 +2,19 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import routes from './routes/v1';
+import { successHandler, errorHandler } from './config/morgan';
 
 const app: Application = express();
 
-// Constants
-const PORT: number = 3000;
-const HOST: string = '0.0.0.0';
+// Morgan
+app.use(successHandler);
+app.use(errorHandler);
+
+// parse json request body
+app.use(express.json());
+
+// parse urlencoded request body
+app.use(express.urlencoded({ extended: true }));
 
 // Enabled cors more info https://www.npmjs.com/package/cors
 app.use(cors());
@@ -18,5 +25,4 @@ app.use(helmet());
 // v1 api routes
 app.use('/v1', routes);
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+export default app;
