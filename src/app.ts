@@ -1,11 +1,14 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, { Application, Request, Response, NextFunction } from 'express';
 
 const app: Application = express();
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Hello world");
+// Constants
+const PORT: number = 3000;
+const HOST: string = '0.0.0.0';
+
+app.get('/', (req: Request, res: Response, next: NextFunction) => {
+  res.send('Hello world');
 });
 
-app.listen(3000, () => {
-  console.log("App is running on port 3000");
-});
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
