@@ -1,6 +1,6 @@
 {
   "name": "create-nodejs-typescript-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
   "main": "src/server.ts",
   "bin": "./index.js",
