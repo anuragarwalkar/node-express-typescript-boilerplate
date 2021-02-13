@@ -1,0 +1,24 @@
+{
+  "name": "express-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuragarwalkar/node-express-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express.js",
+    "typescript"
+  ],
+  "author": "anuragarwalkar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anuragarwalkar/node-express-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/anuragarwalkar/node-express-typescript-boilerplate#readme"
+}
