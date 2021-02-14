@@ -2,13 +2,15 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import routes from './routes/v1';
-import { successHandler, errorHandler } from './config/morgan';
+import { successHandler, errorHandler as morganErrorHandler } from './config/morgan';
+import anyError from './middlewares/anyError';
+import { errorConverter, errorHandler } from './middlewares/error';
 
 const app: Application = express();
 
 // Morgan
 app.use(successHandler);
-app.use(errorHandler);
+app.use(morganErrorHandler);
 
 // parse json request body
 app.use(express.json());
@@ -24,5 +26,14 @@ app.use(helmet());
 
 // v1 api routes
 app.use('/v1', routes);
+
+// send back a 404 error for any unknown api request
+app.use(anyError as any);
+
+// convert error to ApiError, if needed
+app.use(errorConverter as any);
+
+// handle error
+app.use(errorHandler as any);
 
 export default app;
