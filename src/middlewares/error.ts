@@ -3,9 +3,9 @@ import httpStatus from 'http-status';
 import config from '../config/config';
 import logger from '../config/logger';
 import ErrorResponse from '../utils/ErrorResponse';
-import { NextFunction, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Response, Request } from 'express';
 
-export const errorConverter = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorConverter: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   let error = err;
   if (!(error instanceof ErrorResponse)) {
     const statusCode =
@@ -17,7 +17,7 @@ export const errorConverter = (err: any, req: Request, res: Response, next: Next
 };
 
 // eslint-disable-next-line no-unused-vars
-export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;

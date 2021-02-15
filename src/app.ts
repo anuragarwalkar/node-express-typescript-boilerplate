@@ -31,9 +31,9 @@ app.use('/v1', routes);
 app.use(anyError as any);
 
 // convert error to ApiError, if needed
-app.use(errorConverter as any);
+app.use(errorConverter);
 
 // handle error
-app.use(errorHandler as any);
+app.use(errorHandler);
 
 export default app;
