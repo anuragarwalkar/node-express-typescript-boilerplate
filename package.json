@@ -18,8 +18,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.ts",
-    "prettier:fix": "prettier --write **/*.ts",
-    "postinstall": "husky install"
+    "prettier:fix": "prettier --write **/*.ts"
   },
   "repository": {
     "type": "git",
