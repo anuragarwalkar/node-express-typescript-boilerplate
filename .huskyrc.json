@@ -1,6 +1,6 @@
 {
     "hooks": {
-      "pre-commit": "npm lint:stage && npm test",
+      "pre-commit": "npm run lint && npm test",
       "post-commit": "git status",
       "pre-push": "npm test"
     }
