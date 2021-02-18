@@ -84,7 +84,7 @@ const removeDirectory = async (derectories) => {
   derectories.forEach(async (directory) => {
     if (Array.isArray(derectories)) {
       const { path: directoryPath = appPath, name: directoryName } = directory;
-      await exeCommand(`npx rimraf ${directoryPath}${directoryName}`);
+      await exeCommand(`npx rimraf ${directoryPath}/${directoryName}`);
     } else {
       return Promise.reject('please provide array of directories');
     }
@@ -92,9 +92,9 @@ const removeDirectory = async (derectories) => {
 };
 
 const copyFilesFromAsset = () => {
-  const files = ['.env.example'];
+  const files = [{ source: '.env.example', destination: '.env' }];
   files.forEach((file) => {
-    fs.copyFileSync(path.join(`${appPath}/assets`, file), path.join(appPath, file));
+    fs.copyFileSync(path.join(`${appPath}/assets`, file.source), path.join(appPath, file.destination));
   });
 };
 
