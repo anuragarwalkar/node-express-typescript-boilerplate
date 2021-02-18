@@ -5,12 +5,14 @@ const fs = require('fs');
 
 // Unility Functions
 const exec = util.promisify(require('child_process').exec);
+
+// To execute a command
 async function exeCommand(command) {
   try {
     const { stdout, stderr } = await exec(command);
     console.log(stdout, stderr);
-  } catch {
-    console.error(error);
+  } catch (error) {
+    console.log(error);
   }
 }
 
