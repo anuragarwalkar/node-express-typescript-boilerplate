@@ -4,6 +4,9 @@
   "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
   "main": "src/server.ts",
   "bin": "./index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
@@ -23,7 +26,24 @@
   "keywords": [
     "nodejs",
     "express.js",
-    "typescript"
+    "typescript",
+    "node",
+    "node.js",
+    "boilerplate",
+    "generator",
+    "express",
+    "rest",
+    "api",
+    "mongodb",
+    "mongoose",
+    "es6",
+    "es7",
+    "es8",
+    "es9",
+    "jest",
+    "docker",
+    "eslint",
+    "prettier"
   ],
   "author": "anuragarwalkar",
   "license": "MIT",
