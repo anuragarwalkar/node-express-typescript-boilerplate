@@ -92,7 +92,7 @@ const removeDirectory = async (derectories) => {
 };
 
 const copyFilesFromAsset = () => {
-  const files = ['.env'];
+  const files = ['.env.example'];
   files.forEach((file) => {
     fs.copyFileSync(path.join(`${appPath}/assets`, file), path.join(appPath, file));
   });
