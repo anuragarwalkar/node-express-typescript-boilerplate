@@ -7,16 +7,16 @@ const fs = require('fs');
 const exec = util.promisify(require('child_process').exec);
 
 // To execute a command
-async function exeCommand(command) {
+const exeCommand = async (command) => {
   try {
     const { stdout, stderr } = await exec(command);
     console.log(stdout, stderr);
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-function processInput() {
+const processInput = () => {
   // Validate arguments
   if (process.argv.length < 3) {
     console.log('Please enter a valid project name');
@@ -35,7 +35,7 @@ function processInput() {
   }
 
   return object;
-}
+};
 
 const basePath = process.cwd();
 const { folderName, skipInstall = false } = processInput();
@@ -53,19 +53,19 @@ try {
   process.exit(1);
 }
 
-function removeFiles(files) {
+const removeFiles = (files) => {
   for (let file of files) {
     fs.unlinkSync(path.join(appPath, file));
   }
-}
+};
 
-async function cloneRepo() {
+const cloneRepo = async () => {
   console.log(`Downloading files from repo ${repo}`);
   await exeCommand(`git clone --depth 1 ${repo} ${folderName}`);
   console.log('GitHub repository cloned successfully.');
-}
+};
 
-async function installDependencies() {
+const installDependencies = async () => {
   // Changing the base directory
   process.chdir(appPath);
 
@@ -73,14 +73,32 @@ async function installDependencies() {
   console.log('Installing the dependencies 🚀🚀🚀');
   await exeCommand('npm install');
   console.log('Dependencies has been installed successfully.');
-}
+};
 
-function installComplete() {
+const installComplete = () => {
   console.log('Installation is now complete! 🥂');
   console.log(`cd ${folderName}`);
-}
+};
 
-async function main() {
+const removeDirectory = async (derectories) => {
+  derectories.forEach(async (directory) => {
+    if (Array.isArray(derectories)) {
+      const { path: directoryPath = appPath, name: directoryName } = directory;
+      await exeCommand(`npx rimraf ${directoryPath}${directoryName}`);
+    } else {
+      return Promise.reject('please provide array of directories');
+    }
+  });
+};
+
+const copyFilesFromAsset = () => {
+  const files = ['.env'];
+  files.forEach((file) => {
+    fs.copyFileSync(path.join(`${appPath}/assets`, file), path.join(appPath, file));
+  });
+};
+
+const main = async () => {
   // Clone the main repository from github.com
   await cloneRepo();
 
@@ -90,7 +108,10 @@ async function main() {
   }
 
   // Delete .git folder
-  await exeCommand('npx rimraf ./.git');
+  await removeDirectory([{ name: '.git' }, { name: 'assets' }]);
+
+  // Copy files from asset folder
+  copyFilesFromAsset();
 
   // Remove development files
   const files = ['index.js'];
@@ -98,7 +119,7 @@ async function main() {
 
   // Install complete message
   installComplete();
-}
+};
 
 // Running the main function to execute the scripts
 main();
