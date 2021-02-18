@@ -1,6 +1,6 @@
 {
     "hooks": {
-      "pre-commit": "test",
+      "pre-commit": "npm test",
       "post-commit": "git status"
     }
   }
