@@ -1,11 +1,16 @@
 import express from 'express';
 import demoRoute from './demo.routes';
+import swaggerRoute from './swagger.routes';
 const router = express.Router();
 
 const allRoutes = [
   {
     path: '/demo',
     route: demoRoute,
+  },
+  {
+    path: '',
+    route: swaggerRoute,
   },
 ];
 

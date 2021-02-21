@@ -4,12 +4,13 @@
   "description": "This NPM Package will help you to create new node.js and express.js application with typescript suppor",
   "main": "src/server.ts",
   "bin": "./index.js",
+  "type": "commonjs",
   "engines": {
     "node": ">=14.0.0"
   },
   "private": false,
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
     "test": "jest -i",
@@ -60,6 +61,8 @@
     "http-status": "^1.5.0",
     "mongoose": "^5.11.16",
     "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.0.6",
+    "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -68,6 +71,8 @@
     "@types/jest": "^26.0.20",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.27",
+    "@types/swagger-jsdoc": "^6.0.0",
+    "@types/swagger-ui-express": "^4.1.2",
     "airbnb": "0.0.2",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.0.0",
