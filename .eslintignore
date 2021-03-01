@@ -1,3 +1,5 @@
 node_modules
 bin
 index.js
+ecosystem.config.js
+dist

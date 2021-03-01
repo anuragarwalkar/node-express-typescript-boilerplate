@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import config from './config/config';
 import app from './app';
+import config from './config/config';
 import logger from './config/logger';
 
 (async () => {
