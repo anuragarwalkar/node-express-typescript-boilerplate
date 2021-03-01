@@ -4,6 +4,7 @@ module.exports = {
       script: 'dist/src/server.js',
       watch: false,
       autostart: true,
+      instance: 1,
     },
   ],
 };
