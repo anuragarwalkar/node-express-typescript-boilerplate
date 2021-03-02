@@ -1,10 +1,12 @@
-import mongoose from 'mongoose';
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from 'http-status';
+import mongoose from 'mongoose';
 import httpMocks from 'node-mocks-http';
-import { errorConverter, errorHandler } from '../../../src/middlewares/error';
-import ErrorResponse from '../../../src/utils/ErrorResponse';
 import config from '../../../src/config/config';
 import logger from '../../../src/config/logger';
+import { errorConverter, errorHandler } from '../../../src/middlewares/error';
+import ErrorResponse from '../../../src/utils/ErrorResponse';
 
 describe('Error middlewares', () => {
   describe('Error', () => {
@@ -18,7 +20,7 @@ describe('Error middlewares', () => {
     });
 
     test('should convert an Error to ErrorResponse and should have status and message', () => {
-      let error: any = new Error('Any error');
+      const error: any = new Error('Any error');
       error.statusCode = httpStatus.BAD_REQUEST;
       const next = jest.fn();
 
@@ -35,7 +37,7 @@ describe('Error middlewares', () => {
     });
 
     test('should convert an Error without status to ErrorResponse with status 500', () => {
-      let error: any = new Error('Any error');
+      const error: any = new Error('Any error');
       const next = jest.fn();
 
       errorConverter(error, httpMocks.createRequest(), httpMocks.createResponse(), next);
@@ -51,7 +53,7 @@ describe('Error middlewares', () => {
     });
 
     test('should convert an Error without message to ErrorResponse with default message of that http status', () => {
-      let error: any = new Error();
+      const error: any = new Error();
       error.statusCode = httpStatus.BAD_REQUEST;
       const next = jest.fn();
 
@@ -68,7 +70,7 @@ describe('Error middlewares', () => {
     });
 
     test('should convert a Mongoose error to ApiError with status 400 and preserve its message', () => {
-      let error = new mongoose.Error('Any mongoose error');
+      const error = new mongoose.Error('Any mongoose error');
       const next = jest.fn();
 
       errorConverter(error, httpMocks.createRequest(), httpMocks.createResponse(), next);

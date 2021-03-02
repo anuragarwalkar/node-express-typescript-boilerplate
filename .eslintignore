@@ -3,3 +3,5 @@ bin
 index.js
 ecosystem.config.js
 dist
+.eslintrc.js
+jest.config.js

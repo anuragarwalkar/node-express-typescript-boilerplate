@@ -1,9 +1,11 @@
-import mongoose from 'mongoose';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
+import mongoose from 'mongoose';
 import config from '../config/config';
 import logger from '../config/logger';
 import ErrorResponse from '../utils/ErrorResponse';
-import { ErrorRequestHandler, NextFunction, Response, Request } from 'express';
 
 export const errorConverter: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   let error = err;
@@ -16,7 +18,6 @@ export const errorConverter: ErrorRequestHandler = (err: any, req: Request, res:
   next(error);
 };
 
-// eslint-disable-next-line no-unused-vars
 export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {

@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import config from './config';
 import logger from './logger';
 
-morgan.token('message', (req: Request, res: Response) => res.locals.errorMessage || '');
+morgan.token('message', (req: Request, res: Response): string => (res.locals.errorMessage as string) || '');
 
 const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '');
 const successResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms`;

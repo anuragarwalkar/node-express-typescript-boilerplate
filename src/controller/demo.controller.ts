@@ -1,7 +1,7 @@
-import asyncHandler from '../utils/asyncHandler';
+import { Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { NextFunction, Request, Response } from 'express';
+import asyncHandler from '../utils/asyncHandler';
 
-export const demo = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+export const demo = asyncHandler((req: Request, res: Response) => {
   res.status(httpStatus.OK).send('Hello World');
 });

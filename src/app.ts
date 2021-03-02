@@ -1,10 +1,11 @@
-import express, { Application } from 'express';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import cors from 'cors';
+import express, { Application } from 'express';
 import helmet from 'helmet';
-import routes from './routes/v1';
-import { successHandler, errorHandler as morganErrorHandler } from './config/morgan';
-import anyError from './middlewares/anyError';
+import { errorHandler as morganErrorHandler, successHandler } from './config/morgan';
+import anyErrorHandler from './middlewares/anyError';
 import { errorConverter, errorHandler } from './middlewares/error';
+import routes from './routes/v1';
 
 const app: Application = express();
 
@@ -28,7 +29,7 @@ app.use(helmet());
 app.use('/api/v1', routes);
 
 // send back a 404 error for any unknown api request
-app.use(anyError as any);
+app.use(anyErrorHandler as any);
 
 // convert error to ApiError, if needed
 app.use(errorConverter);
